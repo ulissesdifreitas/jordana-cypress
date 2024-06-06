@@ -1,15 +1,51 @@
 /// <reference types="cypress" />
 
+
+import Home from '../../support/page/login'
+
 describe('Login Jordana', () => {
 
-    beforeEach('Acessando', () => {
-         
+   
+
+    beforeEach('Realizando Login', () => {
+
+
+        cy.clearAllLocalStorage()
+        cy.clearCookies()
         cy.visit('https://hmljordana.digitalcare2u.com.br/')
-        cy.wait(10)
-        
-    })
-        
-    
+        cy.wait(3000)
+       
+        cy.get('[class="MuiOutlinedInput-input MuiInputBase-input css-1x5jdmq"]').type('04824295343')
+        cy.get('[class="MuiOutlinedInput-input MuiInputBase-input MuiInputBase-inputAdornedEnd css-1uvydh2"]').type('Jordana@2023')
+        cy.get('[data-testid="loginButton"]').click()
 
 
+
+        if (cy.get('[class="MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButtonBase-root  css-esvfka"]')){
+            cy.get('[class="MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButtonBase-root  css-esvfka"]').click() 
+        }
+        
+        cy.wait(3000)
+        cy.get('[class="MuiTypography-root MuiTypography-h4 jss9 css-1xvinid"]').should('be.visible')
+
+      })
+
+      it('Validando side menu', () => {
+
+      cy.get('[data-testid="hamburguerMenu"]').should('be.visible').click()
+
+      cy.get('[data-testid="homeSideButton"]').should('be.visible')
+
+      cy.get('[data-testid="paineisButton"]').should('be.visible').click()
+      cy.get('[data-testid="painelRastreamentoButton"]').should('be.visible')
+      cy.get('[data-testid="painelTesteButton"]').should('be.visible')
+
+      cy.get('[data-testid="relatóriosButton"]').should('be.visible').click()
+      cy.get('[data-testid="relatorioGeralButton"]').should('be.visible')
+      cy.get('[data-testid="relatorioRastreamentoButton"]').scrollIntoView()
+      .should('be.visible')
+
+
+
+      })
 })
