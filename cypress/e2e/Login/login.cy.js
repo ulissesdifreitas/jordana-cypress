@@ -75,9 +75,13 @@ describe('Login Jordana', () => {
         cy.contains('Amaraji').click()
         
         cy.get('[data-testid="submitFilterPanelTrackingHpv"]').click({ force: true })
-
+        
         cy.wait(15000)
-        cy.pause()
+        cy.get('[data-testid="submitFilterPanelTrackingHpv"]').click({ force: true })
+        cy.get('[data-testid="submitFilterPanelTrackingHpv"]').click({ force: true })
+        
+        cy.get('.css-1eeun7e').scrollIntoView()
+        cy.wait(15000)
         })
 
 
