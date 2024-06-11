@@ -25,7 +25,7 @@ describe('Login Jordana', () => {
             cy.get('[class="MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButtonBase-root  css-esvfka"]').click() 
         }
         
-        cy.wait(3000)
+        cy.wait(1000)
         cy.get('[class="MuiTypography-root MuiTypography-h4 jss9 css-1xvinid"]').should('be.visible')
 
       })
@@ -48,4 +48,37 @@ describe('Login Jordana', () => {
 
 
       })
+
+      it.only('acessando paineis rastreamento', () => {
+
+        cy.wait(2000)
+        cy.get('[data-testid="hamburguerMenu"]').should('be.visible').click()
+  
+        cy.get('[data-testid="homeSideButton"]').should('be.visible')
+  
+        cy.get('[data-testid="paineisButton"]').should('be.visible').click()
+        
+        cy.get('[data-testid="painelRastreamentoButton"]').should('be.visible').click()
+        
+        cy.get('[data-testid="panelTrackingHpvTitle"]').should('be.visible')
+       
+        cy.get('[data-testid="modalEstadoDropdownButton"]').click()
+        
+        cy.get('[data-testid="optionEstado-1"]').click()
+        
+        cy.get('[data-testid="modalMunicipioDropdownButton"]').click({ force: true })
+        
+        cy.get('[data-testid="modalMunicipioInput"] > .MuiOutlinedInput-root')
+        
+        //cy.get('[data-testid="modalMunicipioInput"]').click()
+        
+        cy.contains('Amaraji').click()
+        
+        cy.get('[data-testid="submitFilterPanelTrackingHpv"]').click({ force: true })
+
+        cy.wait(15000)
+        cy.pause()
+        })
+
+
 })
