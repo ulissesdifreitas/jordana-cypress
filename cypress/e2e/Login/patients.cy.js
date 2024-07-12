@@ -25,11 +25,10 @@ describe('Login Jordana', () => {
             cy.get('[class="MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButtonBase-root  css-esvfka"]').click() 
         }
         
-        cy.wait(5000)
+        cy.wait(1000)
         cy.get('[class="MuiTypography-root MuiTypography-h4 jss9 css-1xvinid"]').should('be.visible')
-        cy.get('[class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-5rjaq2"]').click({force:true})
         cy.wait(3000)
-        cy.get('[class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-5rjaq2"]').click({force:true})
+        cy.get('[class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-5rjaq2"]').dblclick({force:true})
         cy.wait(3000)
         cy.get('[class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-5rjaq2"]').click({force:true})
 
@@ -73,23 +72,40 @@ describe('Login Jordana', () => {
 
       })
 
-      it.only('Acessando Menu Pacientes e captando um paciente', () => {
+      it.only('acessando paineis rastreamento', () => {
+        
 
+        cy.wait(2000)
         cy.get('[data-testid="hamburguerMenu"]').should('be.visible').click()
   
         cy.get('[data-testid="homeSideButton"]').should('be.visible')
-
-        cy.get('[class="MuiListItemButton-root MuiListItemButton-gutters MuiButtonBase-root css-1l7cqxi"]').contains('Atendimento').click()
-
-        cy.get('[class="MuiTypography-root MuiTypography-body1 MuiListItemText-primary css-yb0lig"]').contains('Pacientes').click()
-        cy.get('[class="MuiGrid-root MuiGrid-container MuiGrid-spacing-xs-2 css-vo88y5"]').find('[class="MuiOutlinedInput-notchedOutline css-igs3ac"]').eq(2).type('Ulisses')
-        cy.pause()
+  
+        cy.get('[data-testid="paineisButton"]').should('be.visible').click()
         
-        cy.get('[class="MuiTypography-root MuiTypography-body1 MuiListItemText-primary css-yb0lig"').contains('Paraná').invoke('text').then((text) => {
-          expect(text.trim()).to.equal('Paraná')
-        }).click()
-
+        cy.get('[data-testid="painelRastreamentoButton"]').should('be.visible').click()
         
+        cy.get('[data-testid="panelTrackingHpvTitle"]').should('be.visible')
+       
+        cy.get('[data-testid="modalEstadoDropdownButton"]').click()
+        
+        cy.get('[data-testid="optionEstado-1"]').click()
+        
+        cy.get('[data-testid="modalMunicipioDropdownButton"]').click({ force: true })
+        
+        cy.get('[data-testid="modalMunicipioInput"] > .MuiOutlinedInput-root')
+        
+        //cy.get('[data-testid="modalMunicipioInput"]').click()
+        cy.wait(30000)
+        cy.contains('Amaraji').click()
+        
+        cy.get('[data-testid="submitFilterPanelTrackingHpv"]').click({ force: true })
+        
+        cy.wait(15000)
+        cy.get('[data-testid="submitFilterPanelTrackingHpv"]').click({ force: true })
+        cy.get('[data-testid="submitFilterPanelTrackingHpv"]').click({ force: true })
+        
+        cy.get('.css-1eeun7e').scrollIntoView()
+        cy.wait(15000)
         })
 
 
