@@ -1,13 +1,13 @@
 /// <reference types="cypress" />
 
-import Home from '../../support/page/login'
+import Login from '../../support/page/login'
 
 
 describe('Login Jordana', () => {
 
     before('Login', () => {
 
-      Home.realizandoLogin();
+      Login.realizandoLogin();
     
     })
 

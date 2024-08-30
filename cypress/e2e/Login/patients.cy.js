@@ -1,7 +1,7 @@
 /// <reference types="cypress" />
 
 
-import Home from '../../support/page/login'
+import Login from '../../support/page/login'
 
 describe('Login Jordana', () => {
 
@@ -10,7 +10,7 @@ describe('Login Jordana', () => {
     beforeEach('Realizando Login', () => {
 
 
-      Home.realizandoLogin()
+      Login.realizandoLogin()
 
       })
 

@@ -1,6 +1,6 @@
 const elementsLogin = require ("../../page/login/elements").ELEMENTS;
 
-class Home{
+class Login{
 
     acessandoLogin(){
         cy.clearAllLocalStorage()
@@ -29,4 +29,4 @@ class Home{
     cy.wait(2000)
     }}
 
-    export default new Home();
+    export default new Login();

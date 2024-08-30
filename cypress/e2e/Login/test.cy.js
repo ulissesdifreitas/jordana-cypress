@@ -1,6 +1,9 @@
 /// <reference types="cypress" />
 
-import Home from '../../support/page/login'
+import Login from '../../support/page/login'
+import Home from '../../support/page/home'
+import Helper from '../../support/helpers'
+import relatorioGeral from '../../support/page/relatorioGeral';
 import neatCsv from 'neat-csv';
 
 describe('Login Jordana', () => {
@@ -10,44 +13,38 @@ describe('Login Jordana', () => {
     it('Capturando info',()=>{
 
    
-    Home.realizandoLogin()
-
-    cy.wait(5000)
-
-    cy.get('[data-testid="hamburguerMenu"]').should('be.visible').click()
-
-    cy.get('[data-testid="relatóriosButton"]').should('be.visible').click()
-    cy.get('[data-testid="relatorioGeralButton"]').should('be.visible').click()
-
-    cy.contains('.css-1c9l5hu', 'Relatório Geral de Teste de HPV').should('be.visible')
-
-    cy.get('[data-testid="modalEstadoInput"] > .MuiOutlinedInput-root > [data-testid="modalEstadoDropdownButton"] > [data-testid="ArrowDropDownIcon"]').scrollIntoView().click()
-
-    cy.get('[data-testid="optionEstado-1"]').click()
-
-    cy.wait(2000)
-    // cy.contains('.css-1c9l5hu', 'Relatório Geral de Teste de HPV').should('be.visible').click({force:true})
-    // cy.wait(2000)
-    // cy.contains('.css-1c9l5hu', 'Relatório Geral de Teste de HPV').scrollIntoView().click({force:true})
-    // cy.get('[class="MuiModal-root MuiPopover-root MuiMenu-root css-1dfuww7"]').click('center', {force:true})
-    // cy.get('#root').click({force:true})
+    Login.realizandoLogin()
    
-    cy.get('[class^="MuiBackdrop-root MuiBackdrop-invisible"]').click({force:true})
-    cy.wait(5000)
-    cy.get('[data-testid="modalMunicipioDropdownButton"]').click()
-    cy.wait(5000)
-    cy.contains('Amaraji').click()
-    cy.get('[class^="MuiBackdrop-root MuiBackdrop-invisible"]').click({force:true})
+    Helper.espera(5000)  // sempre em milisegundos ex. 5000 = 5 segundos
+
+    Home.clica_hamburguer_menu_button()
+    Home.clica_relatorio_sidemenu_button()
+    Home.clica_relatorio_geral_submenu_button()
+
+    relatorioGeral.verifica_page_relatorio_geral()
+    relatorioGeral.clica_dropdown_estado_button()
+    relatorioGeral.clica_opcao_pernambuco()
+
+    Helper.espera(2000)
+    Helper.clica_fora_do_modal()
+    Helper.espera(5000)
+
+    relatorioGeral.clica_dropdown_municipio_button()
+
+    Helper.espera(5000)
+
+    relatorioGeral.clica_opcao_municipio('Amaraji')  // setar como parâmetro
+    Helper.clica_fora_do_modal()
 
 
     cy.get('[data-testid="modalEstabelecimentoDropdownButton"]').click()
-    cy.contains('PSF ALICE BATISTA DOS ANJOS').click()
-    cy.get('[class^="MuiBackdrop-root MuiBackdrop-invisible"]').click({force:true})
+    cy.contains('PSF ALICE BATISTA DOS ANJOS').click()              // setar como parametro
+    Helper.clica_fora_do_modal()
 
 
     cy.get('[data-testid="submitFilterReportsHpv"]').click()
     cy.wait(8000)
-    cy.get('[data-testid="inputSearchByNameCpf"]').type('MARIA JOSE DE ANDRADE')
+    cy.get('[data-testid="inputSearchByNameCpf"]').type('MARIA JOSE DE ANDRADE') // setar como parametro
     cy.wait(5000)
     cy.get('[data-testid="submitFilterReportsHpv"]').click()
     cy.wait(5000)
@@ -69,7 +66,7 @@ describe('Login Jordana', () => {
 
   it('Acessando Pacientes', () => {
 
-    Home.realizandoLogin()
+    Login.realizandoLogin()
 
     cy.get('[data-testid="hamburguerMenu"]').should('be.visible').click()
 
@@ -80,7 +77,7 @@ describe('Login Jordana', () => {
 
     cy.contains('[data-testid="pacientesList"]', 'Busca por Pacientes').should('be.visible')
     
-    let cpf = '033.459.524-08'
+    let cpf = '033.459.524-08'  // colher do csv
     
     cy.get('[data-testid="cpfField"]').should('be.visible').type(cpf)
    
@@ -118,7 +115,7 @@ describe('Login Jordana', () => {
 
     cy.contains('[data-testid="rhpv-title"]', "Resultado do Teste de HPV").should('be.visible')
 
-    let nomePaciente = "MARIA JOSE DE ANDRADE"
+    let nomePaciente = "MARIA JOSE DE ANDRADE"  // colher do csv
   
     cy.contains('[data-testid="rhpv-paciente_nome"]', nomePaciente).should('be.visible')
     
@@ -128,10 +125,7 @@ describe('Login Jordana', () => {
 
     cy.get('[data-testid="rhpv-resultado"]').should('have.value', "POSITIVO")  // verificar value e Resultado Detectável
     cy.get('[data-testid="rhpv-laboratorio"]').should('have.value', "LAB CENTRAL DE SAUDE PUB DR MILTON BEZERRA SOBRAL LACEN")
-    // cy.get('[data-testid="rhpv-data"]').invoke('val').then(($dataExame) => {
-    //     let dataExame = $dataExame.toString();
-    //     expect(dataExame).to.eq(dataResultadoExame)
-    // })
+   
 
 
 
