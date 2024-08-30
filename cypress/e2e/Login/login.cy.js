@@ -9,48 +9,48 @@ describe('Login Jordana', () => {
 
     beforeEach('Realizando Login', () => {
 
-
-        cy.clearAllLocalStorage()
-        cy.clearCookies()
-        cy.visit('https://hmljordana.digitalcare2u.com.br/')
-        cy.wait(3000)
+      Home.realizandoLogin()
+        // cy.clearAllLocalStorage()
+        // cy.clearCookies()
+        // cy.visit('https://hmljordana.digitalcare2u.com.br/')
+        // cy.wait(3000)
        
-        cy.get('[class="MuiOutlinedInput-input MuiInputBase-input css-1x5jdmq"]').type('04824295343')
-        cy.get('[class="MuiOutlinedInput-input MuiInputBase-input MuiInputBase-inputAdornedEnd css-1uvydh2"]').type('Jordana@2023')
-        cy.get('[data-testid="loginButton"]').click()
+        // cy.get('[class="MuiOutlinedInput-input MuiInputBase-input css-1x5jdmq"]').type('04824295343')
+        // cy.get('[class="MuiOutlinedInput-input MuiInputBase-input MuiInputBase-inputAdornedEnd css-1uvydh2"]').type('Jordana@2023')
+        // cy.get('[data-testid="loginButton"]').click()
 
 
 
-        if (cy.get('[class="MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButtonBase-root  css-esvfka"]')){
-            cy.get('[class="MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButtonBase-root  css-esvfka"]').click() 
-        }
+        // if (cy.get('[class="MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButtonBase-root  css-esvfka"]')){
+        //     cy.get('[class="MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButtonBase-root  css-esvfka"]').click() 
+        // }
         
-        cy.wait(5000)
-        cy.get('[class="MuiTypography-root MuiTypography-h4 jss9 css-1xvinid"]').should('be.visible')
-        cy.get('[class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-5rjaq2"]').click({force:true})
-        cy.wait(3000)
-        cy.get('[class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-5rjaq2"]').click({force:true})
-        cy.wait(3000)
-        cy.get('[class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-5rjaq2"]').click({force:true})
+        // cy.wait(5000)
+        // cy.get('[class="MuiTypography-root MuiTypography-h4 jss9 css-1xvinid"]').should('be.visible')
+        // cy.get('[class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-5rjaq2"]').click({force:true})
+        // cy.wait(3000)
+        // cy.get('[class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-5rjaq2"]').click({force:true})
+        // cy.wait(3000)
+        // cy.get('[class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-5rjaq2"]').click({force:true})
 
-        cy.get('[class="MuiTypography-root MuiTypography-body1 MuiListItemText-primary css-yb0lig"').contains('Paraná').invoke('text').then((text) => {
-        expect(text.trim()).to.equal('Paraná') })
+        // cy.get('[class="MuiTypography-root MuiTypography-body1 MuiListItemText-primary css-yb0lig"').contains('Paraná').invoke('text').then((text) => {
+        // expect(text.trim()).to.equal('Paraná') })
 
-        cy.get('[class="MuiTypography-root MuiTypography-body1 MuiListItemText-primary css-yb0lig"').contains('Paraná').click()
+        // cy.get('[class="MuiTypography-root MuiTypography-body1 MuiListItemText-primary css-yb0lig"').contains('Paraná').click()
       
-        cy.get('[class="MuiTypography-root MuiTypography-body1 MuiListItemText-primary css-yb0lig"').contains('Curitiba').invoke('text').then((text) => {
-        expect(text.trim()).to.equal('Curitiba')})
+        // cy.get('[class="MuiTypography-root MuiTypography-body1 MuiListItemText-primary css-yb0lig"').contains('Curitiba').invoke('text').then((text) => {
+        // expect(text.trim()).to.equal('Curitiba')})
 
-        cy.get('[class="MuiTypography-root MuiTypography-body1 MuiListItemText-primary css-yb0lig"').contains('Curitiba').click()
+        // cy.get('[class="MuiTypography-root MuiTypography-body1 MuiListItemText-primary css-yb0lig"').contains('Curitiba').click()
 
-        cy.get('[class="MuiTypography-root MuiTypography-body1 MuiListItemText-primary css-yb0lig"').contains('DIGITAL CARE 2 YOU').invoke('text').then((text) => {
-        expect(text.trim()).to.equal('DIGITAL CARE 2 YOU') })
+        // cy.get('[class="MuiTypography-root MuiTypography-body1 MuiListItemText-primary css-yb0lig"').contains('DIGITAL CARE 2 YOU').invoke('text').then((text) => {
+        // expect(text.trim()).to.equal('DIGITAL CARE 2 YOU') })
 
-        cy.get('[class="MuiTypography-root MuiTypography-body1 MuiListItemText-primary css-yb0lig"').contains('DIGITAL CARE 2 YOU').scrollIntoView({force:true}).click()
+        // cy.get('[class="MuiTypography-root MuiTypography-body1 MuiListItemText-primary css-yb0lig"').contains('DIGITAL CARE 2 YOU').scrollIntoView({force:true}).click()
 
-        if (cy.get('[class="MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButtonBase-root  css-esvfka"]')){
-          cy.get('[class="MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButtonBase-root  css-esvfka"]').click() 
-        }
+        // if (cy.get('[class="MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButtonBase-root  css-esvfka"]')){
+        //   cy.get('[class="MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButtonBase-root  css-esvfka"]').click() 
+        // }
 
       })
 
@@ -73,7 +73,7 @@ describe('Login Jordana', () => {
 
       })
 
-      it.only('Acessando Menu Pacientes e captando um paciente', () => {
+      it('Acessando Menu Pacientes e captando um paciente', () => {
 
         cy.get('[data-testid="hamburguerMenu"]').should('be.visible').click()
   

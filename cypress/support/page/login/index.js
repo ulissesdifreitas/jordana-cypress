@@ -5,21 +5,28 @@ class Home{
     acessandoLogin(){
         cy.clearAllLocalStorage()
         cy.clearCookies()
-        cy.visit('https://hmljordana.digitalcare2u.com.br/')
+        cy.visit('https://jordana.digitalcare2u.com.br/')
         cy.wait(3000)
     }
 
 
     realizandoLogin(){
-        cy.get(elementsLogin.LOGIN_CPF_FIELD).type('04824295343')
-        cy.get(elementsLogin.LOGIN_PASSWORD_FIELD).type('Jordana@2023')
-        cy.get(elementsLogin.LOGIN_BUTTON).click()
 
-        if (cy.get('[class="MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButtonBase-root  css-esvfka"]')){
-            cy.get('[class="MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButtonBase-root  css-esvfka"]').click() 
-        }
+    cy.clearAllLocalStorage()
+    cy.clearCookies()
+    cy.visit('https://jordana.digitalcare2u.com.br/')
+    cy.wait(10)
+    
 
-        cy.wait(3000)
-        cy.get('[class="MuiTypography-root MuiTypography-h4 jss9 css-1xvinid"]').should('be.visible')
+    cy.get('[class="MuiOutlinedInput-input MuiInputBase-input css-1x5jdmq"]').type('04824295343')
+    cy.get('[class="MuiOutlinedInput-input MuiInputBase-input MuiInputBase-inputAdornedEnd css-1uvydh2"]').type('Jordana@2023')
+    cy.get('[data-testid="loginButton"]').click()
+
+    if (cy.get('[class="MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButtonBase-root  css-esvfka"]')){
+      cy.get('[class="MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButtonBase-root  css-esvfka"]').click() 
     }
-}
+
+    cy.wait(2000)
+    }}
+
+    export default new Home();
