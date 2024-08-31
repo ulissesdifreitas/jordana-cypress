@@ -3,7 +3,8 @@
 import Login from '../../support/page/login'
 import Home from '../../support/page/home'
 import Helper from '../../support/helpers'
-import relatorioGeral from '../../support/page/relatorioGeral';
+import RelatorioGeral from '../../support/page/relatorioGeral';
+import Pacientes from '../../support/page/pacientes';
 import neatCsv from 'neat-csv';
 
 describe('Login Jordana', () => {
@@ -21,43 +22,47 @@ describe('Login Jordana', () => {
     Home.clica_relatorio_sidemenu_button()
     Home.clica_relatorio_geral_submenu_button()
 
-    relatorioGeral.verifica_page_relatorio_geral()
-    relatorioGeral.clica_dropdown_estado_button()
-    relatorioGeral.clica_opcao_pernambuco()
+    RelatorioGeral.verifica_page_relatorio_geral()
+    RelatorioGeral.clica_dropdown_estado_button()
+    RelatorioGeral.clica_opcao_pernambuco()
 
     Helper.espera(2000)
     Helper.clica_fora_do_modal()
     Helper.espera(5000)
 
-    relatorioGeral.clica_dropdown_municipio_button()
+    RelatorioGeral.clica_dropdown_municipio_button()
 
     Helper.espera(5000)
 
-    relatorioGeral.clica_opcao_municipio('Amaraji')  // setar como parâmetro
+    RelatorioGeral.clica_opcao_municipio('Amaraji')  // setar como parâmetro
     Helper.clica_fora_do_modal()
 
-
-    cy.get('[data-testid="modalEstabelecimentoDropdownButton"]').click()
-    cy.contains('PSF ALICE BATISTA DOS ANJOS').click()              // setar como parametro
-    Helper.clica_fora_do_modal()
+    Helper.pausa()
 
 
-    cy.get('[data-testid="submitFilterReportsHpv"]').click()
-    cy.wait(8000)
-    cy.get('[data-testid="inputSearchByNameCpf"]').type('MARIA JOSE DE ANDRADE') // setar como parametro
-    cy.wait(5000)
-    cy.get('[data-testid="submitFilterReportsHpv"]').click()
-    cy.wait(5000)
-    cy.get('[data-testid="exportButtonDropdown"]').click()
-    cy.contains('CSV').click()
+    RelatorioGeral.clica_dropdown_estabelecimento_button()
+    RelatorioGeral.clica_opcao_estabelecimento('PSF ALICE BATISTA DOS ANJOS')// setar como parametro            
+    Helper.clica_fora_do_modal() 
 
-    cy.get('[data-testid="FileDownloadIcon"]').click()
-    cy.wait(5000)
+
+    RelatorioGeral.clica_filtrar_button()
+    
+    Helper.espera(8000)
+    RelatorioGeral.digita_pesquisa_nome_ou_cpf('MARIA JOSE DE ANDRADE')  // setar como parametro
+    Helper.espera(2000)
+    RelatorioGeral.clica_filtrar_button()   
+    Helper.espera(5000)
+    RelatorioGeral.clica_exportar_dropdown_button()
+    RelatorioGeral.clica_formato_arquivo_exportar('CSV')
+
+    RelatorioGeral.verifica_modal_exportar_relatório_download()
+    RelatorioGeral.clica_download_button()
+    Helper.espera(5000)
 
     let table
     cy.fixture('relatorio-hpv.csv')
     .then(neatCsv)
-    .then(data => {
+    .then(data => {                           // TODO: mover arquivo da pasta downloads, para a pasta fixures. e preparar as informações para serem consumidas pelo teste.
       table = data;
       console.table(table);
     })
@@ -68,20 +73,19 @@ describe('Login Jordana', () => {
 
     Login.realizandoLogin()
 
-    cy.get('[data-testid="hamburguerMenu"]').should('be.visible').click()
+    Home.clica_hamburguer_menu_button()
 
-    cy.get('[data-testid="atendimentoButton"]').should('be.visible').click()
-    cy.get('[ data-testid="atendimentoPacienteButton"]').should('be.visible').click()
+    Home.clica_atendimento_sidemenu_button()
+    Home.clica_pacientes_sidemenu_button()
+    Helper.espera(2000)
 
-    cy.wait(2000)
-
-    cy.contains('[data-testid="pacientesList"]', 'Busca por Pacientes').should('be.visible')
+    Pacientes.verifica_page_pacientes()
     
     let cpf = '033.459.524-08'  // colher do csv
     
-    cy.get('[data-testid="cpfField"]').should('be.visible').type(cpf)
-   
-    cy.get('[data-testid="filterButton"]').click()
+    Pacientes.digita_cpf_field(cpf)
+
+    Pacientes.clica_filtrar_button()
 
     cy.get('[data-testid="row-0-cpf"]').should('be.visible')
 

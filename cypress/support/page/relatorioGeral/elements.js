@@ -36,6 +36,8 @@ export const ELEMENTS = {
     LIMPAR_CLEAR_FILTER_BUTTON: '[data-testid="clearFilterReportsHpv"]',
     EXPORTAR_BUTTON: '[data-testid="exportButton"]',
     EXPORTAR_DROPDOWN_BUTTON: '[data-testid="exportButtonDropdown"]',
+    MODAL_EXPORTAR_RELATORIO_DOWNLOAD: '[class="MuiTypography-root MuiTypography-h6 MuiDialogTitle-root css-ohyacs"]',
+    DOWNLOAD_BUTTON: '[data-testid="FileDownloadIcon"]'
 
 
 }
