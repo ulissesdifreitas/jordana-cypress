@@ -43,19 +43,44 @@ export const ELEMENTS = {
     INFO_PESSOAIS_DATA_NASCIMENTO: '[data-testid="info-nascimento"]',
     INFO_PESSOAIS_IDADE: '[data-testid="info-idade"]',
     INFO_PESSOAIS_NACIONALIDADE: '[data-testid="info-nacionalidade"]',
-    INFO_PESSOAIS_RACA_COR: '[data-testid="info-raca_cor"]'
+    INFO_PESSOAIS_RACA_COR: '[data-testid="info-raca_cor"]',
+    INFO_DADOS_RESIDENCIAIS_BOX: '[data-testid="address-box"]',
+    INFO_ADDRESS_CEP: '[data-testid="address-cep"]',
+    INFO_ADDRESS_LOGRADOURO: '[data-testid="address-logradouro"]',
+    INFO_ADDRESS_NUMERO: '[data-testid="address-numero"]',
+    INFO_ADDRESS_COMPLEMENTO: '[data-testid="address-complemento"]',
+    INFO_ADDRESS_BAIRRO: '[data-testid="address-bairro"]',
+    INFO_ADDRESS_REFERENCIA: '[data-testid="address-ref"]',
+    INFO_ADDRESS_UF: '[data-testid="address-uf"]',
+    INFO_ADDRESS_MINICIPIO: '[data-testid="address-municipio"]',
+    INFO_ADDRESS_ZONA: '[data-testid="address-zona"]',
+    INFO_CONTATO_BOX: '[data-testid="contact-box"]',
+    EXAMES_BOX: '[data-testid="exame-box"]',
+    NOVO_REGISTRO_ADD_RASTREIO: '[data-testid="rastreioButton"]',
+    NOVO_REGISTRO_ADD_DIAGNOSTICO: '[data-testid="diagnosticoButton"]',
+    NOVO_REGISTRO_ADD_TRATAMENTO: '[data-testid="tratamentoButton"]',
+    HISTORICO_EXAMES_HEADER_BOX: '[data-testid="historico-box"]',
+    TAB_EXAMES_COLETADOS: '[data-testid="examesColetadosButton"]',
+    TAB_EXAMES_NAO_COLETADOS: '[data-testid="examesNaoColetadosButton"]',
+    STATUS_FILTER_EXAME_FIELD: '[data-testid="statusField"]',
+    TIPO_PROCEDIMENTO_FILTER_EXAME_FIELD: '[data-testid="procedimentoField"]',
+    DATA_INICIO_FILTER: '[data-testid="CalendarIcon"]',
+    DATA_FINAL_FILTER: '[data-testid="CalendarIcon"]',
+    LABEL_ANO_EXAMES: '[data-testid="yearLabel-0"]',
+    EXAME_LINHA_01: '[data-testid="exam-item-0"]',
+    DATA_RESULTADO_EXAME_LINHA_01: '[data-testid="exam-0-data"]',
+    NOME_EXAME_LINHA_01: '[data-testid="exam-0-name"]',
+    STATUS_EXAME_LABEL: '[data-testid="exam-0-status"]',
+    DROPDOWN_EXAME_DETAILS_BUTTON_LINHA_01: '[data-testid="exam-0-collapse"]',
+    EXAME_DETAILS_BOX_LINHA_01: '[data-testid="exam-0-buttons"]',
+    EXAME_DETAILS_INFO_BOX_LINHA_01: '[data-testid="exam-0-collapse_item"]',
+    INFO_DETAILS_REDE_ATENDIMENTO_LINHA_01: '[data-testid="exam-0-rede_de_atendiemnto"]',
+    INFO_DETAILS_N_PROTOCOL_SISCAN_LINHA_01: '[data-testid="exam-0-n_protocolo_do_exame_no_siscan"]',
+    ALTERAR_STATUS_BUTTON_LINHA_01: '[data-testid="button-0-alterar_status"',
+    VER_RESULTADO_BUTTON_LINHA_01: '[data-testid="button-0-ver_resultado"]',
+    INFO_DETAILS_METODO_COLETA_LINHA_01: '[data-testid="exam-0-metodo_coleta"]',
+    INFO_DETAILS_N_KIT: '[data-testid="exam-0-numero_do_kit"]',
+    INFO_DETAILS_N_PROTOCOL: '[data-testid="exam-0-numero_do_protocolo"]',
+    VISUALIZAR_EXAME_BUTTON_LINHA_01: '[data-testid="button-0-visualizar_exame"]'
 
-    //CONTINUA
-
-
-
-
-
-
-
-
-
-
-
-    
 }
