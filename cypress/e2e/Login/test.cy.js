@@ -6,16 +6,15 @@ import Helper from '../../support/helpers'
 import RelatorioGeral from '../../support/page/relatorioGeral';
 import Pacientes from '../../support/page/pacientes';
 import ResultadoTesteHPV from '../../support/page/resultadoTesteHPV'
-import neatCsv from 'neat-csv';
 import resultadoTesteHPV from '../../support/page/resultadoTesteHPV';
+const municipio = Cypress.env("municipio")
+const estabelecimento = Cypress.env("estabelecimento")
+const paciente = String(Cypress.env("paciente"))
 
 describe('Login Jordana', () => {
 
-
-
     it('Capturando info',()=>{
 
-   
     Login.realizandoLogin()
    
     Helper.espera(5000)  // sempre em milisegundos ex. 5000 = 5 segundos
@@ -27,19 +26,19 @@ describe('Login Jordana', () => {
     RelatorioGeral.verifica_page_relatorio_geral()
     RelatorioGeral.clica_dropdown_estado_button()
     RelatorioGeral.clica_opcao_pernambuco()
-    Helper.espera(2000)
+    Helper.espera(2000)                                 // TODO retirar os Helpers dos arquivos feature.cy.js
     Helper.clica_fora_do_modal()
     Helper.espera(5000)
     RelatorioGeral.clica_dropdown_municipio_button()
     Helper.espera(5000)
-    RelatorioGeral.clica_opcao_municipio('Amaraji')  // setar como parâmetro
+    RelatorioGeral.clica_opcao_municipio(municipio)
     Helper.clica_fora_do_modal()
     RelatorioGeral.clica_dropdown_estabelecimento_button()
-    RelatorioGeral.clica_opcao_estabelecimento('PSF ALICE BATISTA DOS ANJOS')// setar como parametro            
+    RelatorioGeral.clica_opcao_estabelecimento(estabelecimento)      
     Helper.clica_fora_do_modal() 
     RelatorioGeral.clica_filtrar_button()
     Helper.espera(8000)
-    RelatorioGeral.digita_pesquisa_nome_ou_cpf('MARIA JOSE DE ANDRADE')  // setar como parametro
+    RelatorioGeral.digita_pesquisa_nome_ou_cpf(paciente) 
     Helper.espera(2000)
     RelatorioGeral.clica_filtrar_button()   
     Helper.espera(5000)
@@ -48,15 +47,9 @@ describe('Login Jordana', () => {
     RelatorioGeral.verifica_modal_exportar_relatório_download()
     RelatorioGeral.clica_download_button()
     Helper.espera(5000)
-
-    let table
-    cy.fixture('relatorio-hpv.csv')
-    .then(neatCsv)
-    .then(data => {                           // TODO: mover arquivo da pasta downloads, para a pasta fixures. e preparar as informações para serem consumidas pelo teste.
-      table = data;
-      console.table(table);
-    })
-    
+    Helper.movendo_arquivo_de_downloads_para_fixtures('relatorio-hpv.csv')
+    Helper.leitura_dados_relatorio()
+    cy.pause()
   }) 
 
   it('Acessando Pacientes', () => {
@@ -64,15 +57,13 @@ describe('Login Jordana', () => {
     Login.realizandoLogin()
 
     Home.clica_hamburguer_menu_button()
-
     Home.clica_atendimento_sidemenu_button()
     Home.clica_pacientes_sidemenu_button()
+
     Helper.espera(2000)
 
     Pacientes.verifica_page_pacientes()
-    
     let cpf = '033.459.524-08'  // colher do csv
-    
     Pacientes.digita_cpf_field(cpf)   // receber do csv
     Pacientes.clica_filtrar_button()
     Pacientes.verifica_resultado_filtro()
