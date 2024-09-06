@@ -7,9 +7,14 @@ import RelatorioGeral from '../../support/page/relatorioGeral';
 import Pacientes from '../../support/page/pacientes';
 import ResultadoTesteHPV from '../../support/page/resultadoTesteHPV'
 import resultadoTesteHPV from '../../support/page/resultadoTesteHPV';
-const municipio = Cypress.env("municipio")
-const estabelecimento = Cypress.env("estabelecimento")
-const paciente = String(Cypress.env("paciente"))
+// const municipio = Cypress.env("municipio")
+// const estabelecimento = Cypress.env("estabelecimento")
+// const paciente = String(Cypress.env("paciente"))
+
+const municipio = 'Amaraji'
+const estabelecimento = 'PSF ALICE BATISTA DOS ANJOS'
+const paciente = 'MARIA JOSE DE ANDRADE'
+
 
 describe('Login Jordana', () => {
 
@@ -49,7 +54,6 @@ describe('Login Jordana', () => {
     Helper.espera(5000)
     Helper.movendo_arquivo_de_downloads_para_fixtures('relatorio-hpv.csv')
     Helper.leitura_dados_relatorio()
-    cy.pause()
   }) 
 
   it('Acessando Pacientes', () => {
@@ -63,17 +67,17 @@ describe('Login Jordana', () => {
     Helper.espera(2000)
 
     Pacientes.verifica_page_pacientes()
-    let cpf = '033.459.524-08'  // colher do csv
-    Pacientes.digita_cpf_field(cpf)   // receber do csv
+    Helper.leitura_dados_relatorio()
+    Helper.usando_relatorio_digitando_cpf()
     Pacientes.clica_filtrar_button()
     Pacientes.verifica_resultado_filtro()
-    Pacientes.verifica_cpf_paciente_relatorio(cpf)  // receber do csv
+    Helper.usando_relatorio_verifica_cpf_paciente()
     Pacientes.clica_visualizar_ficha_paciente()
-
+    
     Helper.espera(2000)
-
+    
     Pacientes.verifica_ficha_paciente()
-    Pacientes.verifica_cpf_ficha_paciente(cpf)
+    Helper.usando_relatorio_verifica_cpf_sem_ponto_hifen()
     Pacientes.clica_exames_coletados_button()
     Pacientes.verifica_teste_hpv_existente()  // TODO parametrizar e melhorar entradas
     Pacientes.verifica_teste_hpv_disponivel()  // TODO parametrizar e melhorar entradas
@@ -82,11 +86,10 @@ describe('Login Jordana', () => {
     Pacientes.clica_ver_resultado_hpv_button()  // TODO parametrizar e melhorar entradas
     
     ResultadoTesteHPV.verifica_page_resultado_hpv()
-    let nomePaciente = "MARIA JOSE DE ANDRADE"  // colher do csv
-    ResultadoTesteHPV.verifica_nome_paciente_resultado_hpv(nomePaciente)
-    ResultadoTesteHPV.verifica_cpf_paciente_resultado_hpv(cpf) // TODO parametrizar e melhorar entradas
-    resultadoTesteHPV.verifica_resultado_teste_hpv()  // TODO parametrizar e melhorar entradas ## verificar value e Resultado Detectável
-    resultadoTesteHPV.verifica_laboratorio_responsavel()  // TODO parametrizar e melhorar entradas ## verificar value e Resultado Detectável
+    Helper.usando_relatorio_verifica_nome_paciente()
+    Helper.usando_relatorio_verifica_cpf_com_hifen()
+    Helper.usando_relatorio_verifica_resultado_teste_hpv()
+    resultadoTesteHPV.verifica_laboratorio_responsavel() // TODO parametrizar e melhorar entradas ## verificar value e Resultado Detectável
     
     })
   })
