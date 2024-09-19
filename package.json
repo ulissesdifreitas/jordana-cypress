@@ -1,0 +1,10 @@
+{
+  "devDependencies": {
+    "cypress": "^13.11.0",
+    "neat-csv": "^5.2.0"
+  },
+  "scripts": {
+    "cy:open": "cypress open",
+    "test": "cypress run"
+  }
+}
