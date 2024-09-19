@@ -19,14 +19,17 @@ class RelatorioGeral{
     }
 
     clica_opcao_municipio(municipio){
+        cy.wait(5000)
         cy.contains(municipio).click()
     }
 
     clica_dropdown_estabelecimento_button(){
+        cy.wait(5000)
         cy.get(elementsRelatorioGeral.ESTABELECIMENTO_DROPDOWN_BUTTON).click()
     }
     
     clica_opcao_estabelecimento(estabelecimento){
+        cy.wait(5000)
         cy.contains(estabelecimento).click()
     }
 
