@@ -1,58 +1,98 @@
 /// <reference types="cypress" />
 
+import Login from '../../support/page/login'
+import Home from '../../support/page/home'
+import Helper from '../../support/helpers'
+import RelatorioGeral from '../../support/page/relatorioGeral';
+import Pacientes from '../../support/page/pacientes';
+import ResultadoTesteHPV from '../../support/page/resultadoTesteHPV'
+import resultadoTesteHPV from '../../support/page/resultadoTesteHPV';
+// const municipio = Cypress.env("municipio")
+// const estabelecimento = Cypress.env("estabelecimento")
+// const paciente = String(Cypress.env("paciente"))
+
+const municipio = 'Amaraji'
+const estabelecimento = 'PSF ALICE BATISTA DOS ANJOS'
+const paciente = 'MARIA JOSE DE ANDRADE'
+
+
 describe('Login Jordana', () => {
 
+    it('Capturando info',()=>{
 
+    Login.realizandoLogin()
+   
+    Helper.espera(5000)  // sempre em milisegundos ex. 5000 = 5 segundos
 
-    it('teste',()=>{
+    Home.clica_hamburguer_menu_button()
+    Home.clica_relatorio_sidemenu_button()
+    Home.clica_relatorio_geral_submenu_button()
 
-    cy.visit('https://jordana.digitalcare2u.com.br/')
-    cy.wait(10)
-    
-
-    cy.get('[class="MuiOutlinedInput-input MuiInputBase-input css-1x5jdmq"]').type('04824295343')
-    cy.get('[class="MuiOutlinedInput-input MuiInputBase-input MuiInputBase-inputAdornedEnd css-1uvydh2"]').type('Jordana@2023')
-    cy.get('[data-testid="loginButton"]').click()
-
-    if (cy.get('[class="MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButtonBase-root  css-esvfka"]')){
-      cy.get('[class="MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButtonBase-root  css-esvfka"]').click() 
-    }
-
-    cy.wait(5000)
-
-    cy.get('[data-testid="hamburguerMenu"]').should('be.visible').click()
-
-    cy.get('[data-testid="relatóriosButton"]').should('be.visible').click()
-    cy.get('[data-testid="relatorioGeralButton"]').should('be.visible').click()
-
-    cy.contains('.css-1c9l5hu', 'Relatório Geral de Teste de HPV').should('be.visible')
-
-    cy.get('[data-testid="modalEstadoInput"] > .MuiOutlinedInput-root > [data-testid="modalEstadoDropdownButton"] > [data-testid="ArrowDropDownIcon"]').scrollIntoView().click()
-
-    cy.get('[data-testid="optionEstado-1"]').click()
-
-    cy.wait(2000)
-    cy.contains('.css-1c9l5hu', 'Relatório Geral de Teste de HPV').should('be.visible').click({force:true})
-    cy.wait(2000)
-    cy.contains('.css-1c9l5hu', 'Relatório Geral de Teste de HPV').scrollIntoView().click({force:true})
-    cy.get('[class="MuiModal-root MuiPopover-root MuiMenu-root css-1dfuww7"]').click('center', {force:true})
-    cy.get('#root').click({force:true})
-    cy.get('[data-testid="submitFilterReportsHpv"]').click({force:true})
-    cy.get('[data-testid="submitFilterReportsHpv"]').click({force:true})
-    cy.get('[data-testid="submitFilterReportsHpv"]').click({force:true})
-    cy.get('[data-testid="submitFilterReportsHpv"]').click({force:true})
-    cy.get('[data-testid="submitFilterReportsHpv"]').click({force:true})
-    cy.get('[data-testid="submitFilterReportsHpv"]').click({force:true})
-    cy.get('[class^="MuiBackdrop-root MuiBackdrop-invisible"]').click({force:true})
-
-    cy.pause()
-
-    cy.get('[data-testid="modalMunicipioInput"] > .MuiOutlinedInput-root').scrollIntoView().should('be.visible').click()
-
-
-
+    RelatorioGeral.verifica_page_relatorio_geral()
+    RelatorioGeral.clica_dropdown_estado_button()
+    RelatorioGeral.clica_opcao_pernambuco()
+    Helper.espera(2000)                                 // TODO retirar os Helpers dos arquivos feature.cy.js
+    Helper.clica_fora_do_modal()
+    Helper.espera(5000)
+    RelatorioGeral.clica_dropdown_municipio_button()
+    Helper.espera(5000)
+    RelatorioGeral.clica_opcao_municipio(municipio)
+    Helper.clica_fora_do_modal()
+    RelatorioGeral.clica_dropdown_estabelecimento_button()
+    RelatorioGeral.clica_opcao_estabelecimento(estabelecimento)      
+    Helper.clica_fora_do_modal() 
+    RelatorioGeral.clica_filtrar_button()
+    Helper.espera(8000)
+    RelatorioGeral.digita_pesquisa_nome_ou_cpf(paciente) 
+    Helper.espera(2000)
+    RelatorioGeral.clica_filtrar_button()   
+    Helper.espera(5000)
+    RelatorioGeral.clica_exportar_dropdown_button()
+    RelatorioGeral.clica_formato_arquivo_exportar('CSV')
+    RelatorioGeral.verifica_modal_exportar_relatório_download()
+    RelatorioGeral.clica_download_button()
+    Helper.espera(5000)
+    Helper.movendo_arquivo_de_downloads_para_fixtures('relatorio-hpv.csv')
+    Helper.leitura_dados_relatorio()
   }) 
+
+  it('Acessando Pacientes', () => {
+
+    Login.realizandoLogin()
+
+    Home.clica_hamburguer_menu_button()
+    Home.clica_atendimento_sidemenu_button()
+    Home.clica_pacientes_sidemenu_button()
+
+    Helper.espera(2000)
+
+    Pacientes.verifica_page_pacientes()
+    Helper.leitura_dados_relatorio()
+    Helper.usando_relatorio_digitando_cpf()
+    Pacientes.clica_filtrar_button()
+    Pacientes.verifica_resultado_filtro()
+    Helper.usando_relatorio_verifica_cpf_paciente()
+    Pacientes.clica_visualizar_ficha_paciente()
+    
+    Helper.espera(2000)
+    
+    Pacientes.verifica_ficha_paciente()
+    Helper.usando_relatorio_verifica_cpf_sem_ponto_hifen()
+    Pacientes.clica_exames_coletados_button()
+    Pacientes.verifica_teste_hpv_existente()  // TODO parametrizar e melhorar entradas
+    Pacientes.verifica_teste_hpv_disponivel()  // TODO parametrizar e melhorar entradas
+    Pacientes.verifica_data_resultado()  // TODO parametrizar e melhorar entradas
+    Pacientes.clica_dropdown_detalhe_hpv_exame()  // TODO parametrizar e melhorar entradas
+    Pacientes.clica_ver_resultado_hpv_button()  // TODO parametrizar e melhorar entradas
+    
+    ResultadoTesteHPV.verifica_page_resultado_hpv()
+    Helper.usando_relatorio_verifica_nome_paciente()
+    Helper.usando_relatorio_verifica_cpf_com_hifen()
+    Helper.usando_relatorio_verifica_resultado_teste_hpv()
+    resultadoTesteHPV.verifica_laboratorio_responsavel() // TODO parametrizar e melhorar entradas ## verificar value e Resultado Detectável
+    
+    })
+  })
     
   
   
-  })

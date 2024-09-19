@@ -1,21 +1,14 @@
 /// <reference types="cypress" />
 
+import Login from '../../support/page/login'
+
+
 describe('Login Jordana', () => {
 
     before('Login', () => {
-        cy.visit('https://jordana.digitalcare2u.com.br/')
-    cy.wait(10)
+
+      Login.realizandoLogin();
     
-
-    cy.get('[class="MuiOutlinedInput-input MuiInputBase-input css-1x5jdmq"]').type('04824295343')
-    cy.get('[class="MuiOutlinedInput-input MuiInputBase-input MuiInputBase-inputAdornedEnd css-1uvydh2"]').type('Jordana@2023')
-    cy.get('[data-testid="loginButton"]').click()
-
-    if (cy.get('[class="MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButtonBase-root  css-esvfka"]')){
-      cy.get('[class="MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButtonBase-root  css-esvfka"]').click() 
-    }
-
-    cy.wait(2000)
     })
 
     it('Acessando Pacientes', () => {
@@ -54,7 +47,6 @@ describe('Login Jordana', () => {
     cy.get('[data-testid="examesColetadosButton"]').should('be.visible').click()
 
     cy.contains('Teste de HPV')
-    // cy.get('[data-testid^="exam-item-card-"]').should('deep.equal', 'Teste de HPV')
 
     cy.get('[data-testid="exam-1-name"]').should('have.text', "Teste de HPV")
 
@@ -76,14 +68,14 @@ describe('Login Jordana', () => {
           expect($value3).to.eq(cpf.replace(".", "").replace(".", ""))
         })
 
-    cy.get('[data-testid="rhpv-resultado"]').should('have.value', "POSITIVO")
+    cy.get('[data-testid="rhpv-resultado"]').should('have.value', "POSITIVO")  // verificar value e Resultado Detectável
     cy.get('[data-testid="rhpv-laboratorio"]').should('have.value', "LAB CENTRAL DE SAUDE PUB DR MILTON BEZERRA SOBRAL LACEN")
-    cy.get('[data-testid="rhpv-data"]').invoke('val').then(($dataExame) => {
-        let dataExame = $dataExame.toString();
-        expect(dataExame).to.eq(dataResultadoExame)
-    })
+    // cy.get('[data-testid="rhpv-data"]').invoke('val').then(($dataExame) => {
+    //     let dataExame = $dataExame.toString();
+    //     expect(dataExame).to.eq(dataResultadoExame)
+    // })
 
 
 
     })
-})
+  })

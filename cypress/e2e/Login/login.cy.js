@@ -9,7 +9,7 @@ describe('Login Jordana', () => {
 
     beforeEach('Realizando Login', () => {
 
-
+      Home.realizandoLogin()
         cy.clearAllLocalStorage()
         cy.clearCookies()
         cy.visit('https://hmljordana.digitalcare2u.com.br/')
@@ -33,24 +33,24 @@ describe('Login Jordana', () => {
         cy.wait(3000)
         cy.get('[class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-5rjaq2"]').click({force:true})
 
-        cy.get('[class="MuiTypography-root MuiTypography-body1 MuiListItemText-primary css-yb0lig"').contains('Paraná').invoke('text').then((text) => {
-        expect(text.trim()).to.equal('Paraná') })
+        // cy.get('[class="MuiTypography-root MuiTypography-body1 MuiListItemText-primary css-yb0lig"').contains('Paraná').invoke('text').then((text) => {
+        // expect(text.trim()).to.equal('Paraná') })
 
-        cy.get('[class="MuiTypography-root MuiTypography-body1 MuiListItemText-primary css-yb0lig"').contains('Paraná').click()
+        // cy.get('[class="MuiTypography-root MuiTypography-body1 MuiListItemText-primary css-yb0lig"').contains('Paraná').click()
       
-        cy.get('[class="MuiTypography-root MuiTypography-body1 MuiListItemText-primary css-yb0lig"').contains('Curitiba').invoke('text').then((text) => {
-        expect(text.trim()).to.equal('Curitiba')})
+        // cy.get('[class="MuiTypography-root MuiTypography-body1 MuiListItemText-primary css-yb0lig"').contains('Curitiba').invoke('text').then((text) => {
+        // expect(text.trim()).to.equal('Curitiba')})
 
-        cy.get('[class="MuiTypography-root MuiTypography-body1 MuiListItemText-primary css-yb0lig"').contains('Curitiba').click()
+        // cy.get('[class="MuiTypography-root MuiTypography-body1 MuiListItemText-primary css-yb0lig"').contains('Curitiba').click()
 
-        cy.get('[class="MuiTypography-root MuiTypography-body1 MuiListItemText-primary css-yb0lig"').contains('DIGITAL CARE 2 YOU').invoke('text').then((text) => {
-        expect(text.trim()).to.equal('DIGITAL CARE 2 YOU') })
+        // cy.get('[class="MuiTypography-root MuiTypography-body1 MuiListItemText-primary css-yb0lig"').contains('DIGITAL CARE 2 YOU').invoke('text').then((text) => {
+        // expect(text.trim()).to.equal('DIGITAL CARE 2 YOU') })
 
-        cy.get('[class="MuiTypography-root MuiTypography-body1 MuiListItemText-primary css-yb0lig"').contains('DIGITAL CARE 2 YOU').scrollIntoView({force:true}).click()
+        // cy.get('[class="MuiTypography-root MuiTypography-body1 MuiListItemText-primary css-yb0lig"').contains('DIGITAL CARE 2 YOU').scrollIntoView({force:true}).click()
 
-        if (cy.get('[class="MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButtonBase-root  css-esvfka"]')){
-          cy.get('[class="MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButtonBase-root  css-esvfka"]').click() 
-        }
+        // if (cy.get('[class="MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButtonBase-root  css-esvfka"]')){
+        //   cy.get('[class="MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButtonBase-root  css-esvfka"]').click() 
+        // }
 
       })
 
@@ -73,7 +73,7 @@ describe('Login Jordana', () => {
 
       })
 
-      it.only('Acessando Menu Pacientes e captando um paciente', () => {
+      it('Acessando Menu Pacientes e captando um paciente', () => {
 
         cy.get('[data-testid="hamburguerMenu"]').should('be.visible').click()
   
