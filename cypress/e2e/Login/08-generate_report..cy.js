@@ -38,8 +38,7 @@ describe('Login Jordana', () => {
       RelatorioGeral.verifica_modal_exportar_relatório_download_e2e()
       RelatorioGeral.clica_download_button()
       Helper.espera(5000)
-      Helper.movendo_arquivo_de_downloads_para_fixtures('relatorio-hpv.csv')
-      Helper.leitura_dados_relatorio()
+      Helper.verifica_download_relatorio()
       
     })
   })

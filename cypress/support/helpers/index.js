@@ -35,6 +35,10 @@ class Helper {
       .as('tableData')
   }
 
+  verifica_download_relatorio(){
+    cy.readFile('cypress/downloads/relatorio-hpv.csv').should('exist')
+  }
+
   usando_relatorio_digitando_cpf() {
     cy.get('@tableData').then(table => {
       console.log('Dados da tabela: ', table);

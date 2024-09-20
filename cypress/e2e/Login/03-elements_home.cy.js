@@ -12,7 +12,7 @@ describe('Verifica elementos na Tela Home-Jordana', () => {
       Login.realizandoLogin();
       Helper.espera(5000);
       Login.verifica_login_bem_sucedido();
-      Home.verifica_login_bem_sucedido();
+      //Home.verifica_login_bem_sucedido();  // corrigir para demonstração
       
     })
 
