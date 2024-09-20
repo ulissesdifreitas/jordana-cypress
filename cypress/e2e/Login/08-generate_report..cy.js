@@ -35,7 +35,7 @@ describe('Login Jordana', () => {
       Helper.espera(8000)
       RelatorioGeral.clica_exportar_dropdown_button()
       RelatorioGeral.clica_formato_arquivo_exportar('CSV')
-      RelatorioGeral.verifica_modal_exportar_relatório_download()
+      RelatorioGeral.verifica_modal_exportar_relatório_download_e2e()
       RelatorioGeral.clica_download_button()
       Helper.espera(5000)
       Helper.movendo_arquivo_de_downloads_para_fixtures('relatorio-hpv.csv')

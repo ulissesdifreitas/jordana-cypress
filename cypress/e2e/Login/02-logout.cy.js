@@ -1,7 +1,7 @@
 /// <reference types="cypress" />
 
-import login from '../../support/page/login';
 import Login from '../../support/page/login'
+import Helper from '../../support/helpers'
 
 
 describe('Verifica Logout no Jordana', () => {

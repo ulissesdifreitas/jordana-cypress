@@ -39,7 +39,7 @@ class Pacientes{
     }
 
     verifica_nome_mae_e2e(){
-        cy.get(elementsPacientes.NOME_DA_MAE_FIELD_INPUT_FILTER).invoke('text').then(($value) => {
+        cy.get(elementsPacientes.DADO_NOME_MAE).invoke('text').then(($value) => {
             expect($value).to.eq(test_nome_mae_e2e)
     })
     }
