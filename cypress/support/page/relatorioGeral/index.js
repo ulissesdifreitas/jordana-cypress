@@ -1,4 +1,5 @@
 const elementsRelatorioGeral = require ("../../page/relatorioGeral/elements").ELEMENTS;
+const test_municipio_e2e = Cypress.env("test_municipio_e2e")
 
 class RelatorioGeral{
 
@@ -21,6 +22,11 @@ class RelatorioGeral{
     clica_opcao_municipio(municipio){
         cy.wait(5000)
         cy.contains(municipio).click()
+    }
+
+    clica_opcao_municipio_e2e(){
+        cy.wait(5000)
+        cy.contains(test_municipio_e2e).click()
     }
 
     clica_dropdown_estabelecimento_button(){

@@ -1,4 +1,8 @@
 const elementsPacientes = require ("../../page/pacientes/elements").ELEMENTS;
+const test_cpf_e2e = Cypress.env("test_cpf_e2e")
+const test_nome_e2e = Cypress.env("test_nome_e2e")
+const test_cns_e2e = Cypress.env("test_cns_e2e")
+const test_nome_mae_e2e = Cypress.env("test_nome_mae_e2e")
 
 class Pacientes{
 
@@ -14,6 +18,30 @@ class Pacientes{
         cy.get(elementsPacientes.DADO_CPF).invoke('text').then(($value) => {
             expect($value).to.eq(cpf)
           })
+    }
+
+    verifica_cpf_e2e(){
+        cy.get(elementsPacientes.DADO_CPF).invoke('text').then(($value) => {
+            expect($value).to.eq(test_cpf_e2e)
+    })
+    }
+
+    verifica_nome_e2e(){
+        cy.get(elementsPacientes.DADO_NOME).invoke('text').then(($value) => {
+            expect($value).to.eq(test_nome_e2e)
+    })
+    }
+
+    verifica_cns_e2e(){
+        cy.get(elementsPacientes.DADO_N_CARTAO_SUS_LINHA_01).invoke('text').then(($value) => {
+            expect($value).to.eq(test_cns_e2e)
+    })
+    }
+
+    verifica_nome_mae_e2e(){
+        cy.get(elementsPacientes.NOME_DA_MAE_FIELD_INPUT_FILTER).invoke('text').then(($value) => {
+            expect($value).to.eq(test_nome_mae_e2e)
+    })
     }
 
     verifica_ficha_paciente(){
@@ -44,6 +72,22 @@ class Pacientes{
 
     digita_cpf_field(cpf){
         cy.get(elementsPacientes.CPF_FIELD_INPUT_FILTER).should('be.visible').type(cpf)
+    }
+
+    digita_cpf_e2e(){
+        cy.get(elementsPacientes.CPF_FIELD_INPUT_FILTER).should('be.visible').type(test_cpf_e2e)
+    }
+
+    digita_nome_e2e(){
+        cy.get(elementsPacientes.NOME_FIELD_INPUT_FILTER).should('be.visible').type(test_nome_e2e)
+    }
+
+    digita_cns_e2e(){
+        cy.get(elementsPacientes.CNS_FIELD_INPUT_FILTER).should('be.visible').type(test_cns_e2e)
+    }
+
+    digita_nome_mae_e2e(){
+        cy.get(elementsPacientes.NOME_DA_MAE_FIELD_INPUT_FILTER).should('be.visible').type(test_nome_mae_e2e)
     }
 
     clica_filtrar_button(){

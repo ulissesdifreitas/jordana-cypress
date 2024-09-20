@@ -30,6 +30,19 @@ class Login{
     }
 
     cy.wait(2000)
-    }}
+    }
 
+    verifica_login_bem_sucedido(){
+      cy.get(elementsLogin.HOME_LABEL).should('be.visible')
+    }
+
+    clica_logout_button(){
+      cy.get(elementsLogin.LOGOUT_BUTTON).should('be.visible').click()
+    }
+
+    verifica_base_url(){
+      cy.url('be.equal', prod_url)
+    }
+
+  }
     export default new Login();
