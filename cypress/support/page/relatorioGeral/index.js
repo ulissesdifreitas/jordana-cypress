@@ -4,7 +4,7 @@ const test_municipio_e2e = Cypress.env("test_municipio_e2e")
 class RelatorioGeral{
 
     verifica_page_relatorio_geral(){
-        cy.contains(elementsRelatorioGeral.RELATORIO_GERAL_LABEL_TITLE, 'Relatório Geral de Teste de HPV').should('be.visible')
+        cy.get('[class$=css-1c9l5hu]').children('h4[class$=css-3d6ecr]').should('have.text', 'Relatório Geral do Teste de HPV').should('be.visible')
     }
 
     clica_dropdown_estado_button(){

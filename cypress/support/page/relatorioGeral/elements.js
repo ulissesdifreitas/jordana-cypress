@@ -1,6 +1,6 @@
 export const ELEMENTS = {
 
-    RELATORIO_GERAL_LABEL_TITLE: '.css-1c9l5hu',
+    RELATORIO_GERAL_LABEL_TITLE: '[class$=css-1c9l5hu]',
     VOLTAR_BUTTON: '[data-testid="returnButton/home"]',
     ESTADO_FIELD_INPUT_FILTER: '[data-testid="modalEstadoInput"]',
     ESTADO_DROPDOWN_BUTTON: '[data-testid="modalEstadoInput"] > .MuiOutlinedInput-root > [data-testid="modalEstadoDropdownButton"] > [data-testid="ArrowDropDownIcon"]',
