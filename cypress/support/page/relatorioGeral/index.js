@@ -56,7 +56,7 @@ class RelatorioGeral{
     }
 
     verifica_modal_exportar_relatório_download(){
-        cy.contains(elementsRelatorioGeral.MODAL_EXPORTAR_RELATORIO_DOWNLOAD, 'Exportar Relatório dos Exames Agendados').should('be.visible')
+        cy.contains(elementsRelatorioGeral.MODAL_EXPORTAR_RELATORIO_DOWNLOAD, 'Exportar Relatório Geral de Testes de HPV').should('be.visible')
     }
 
     verifica_modal_exportar_relatório_download_e2e(){

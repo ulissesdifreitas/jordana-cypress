@@ -5,6 +5,7 @@
   },
   "scripts": {
     "cy:open": "cypress open",
-    "test": "cypress run"
+    "test": "cypress run",
+    "cy:test": "cypress run --browser chrome --headless --config video=false --spec cypress/e2e/Login/test.cy.js"
   }
 }
