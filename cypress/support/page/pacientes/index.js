@@ -113,4 +113,4 @@ class Pacientes{
   
 }
 
-    export default new Pacientes();
+export default new Pacientes();
