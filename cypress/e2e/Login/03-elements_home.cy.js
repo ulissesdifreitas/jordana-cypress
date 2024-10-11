@@ -23,7 +23,9 @@ describe('Verifica elementos na Tela Home-Jordana', () => {
       Home.verifica_relatorio_side_menu();
       Home.clica_atendimento_sidemenu_button();
       Home.verifica_submenu_pacientes();
-      Home.verificar_paineis();
+      Home.verifica_paineis();
+      Home.clica_paineis_sidemenu_button();
+      Home.verifica_submenu_painel_hpv();
       Home.clica_atendimento_sidemenu_button();
       Home.clica_relatorio_sidemenu_button();
       Home.verifica_relatoriogeral_submenu_menu();

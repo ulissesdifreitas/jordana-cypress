@@ -1,7 +1,5 @@
 export const ELEMENTS = {
 
-    PAINEIS_SIDE_MENU_BUTTON: '["data-testid="paineisButton"]',
-    PAINEL_TESTE_HPV_SIDE_MENU: '[data-testid="painelTesteButton"]',
     VOLTAR_HOME_BUTTON: '[data-testid="returnButton/home"]',
     TITLE_PAGE_PAINEL_TESTE_HPV: '[data-testid="panel"]',
     ESTADO_FIELD_INPUT_FILTER: '[data-testid="modalEstadoInput"]',

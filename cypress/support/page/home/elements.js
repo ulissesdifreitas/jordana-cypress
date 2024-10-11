@@ -10,6 +10,8 @@ export const ELEMENTS = {
     ATENDIMENTO_SIDEMENU_BUTTON: '[data-testid="atendimentoButton"]',
     PACIENTES_SUBMENU_BUTTON: '[data-testid="atendimentoPacienteButton"]',
     RELATORIO_SIDEMENU_BUTTON: '[data-testid="relatóriosButton"]',
+    PAINEIS_SIDE_MENU_BUTTON: '[data-testid="paineisButton"]',
+    PAINEL_TESTE_HPV_SIDE_MENU: '[data-testid="painelTesteButton"]',
     RELATORIOGERAL_SUBMENU_BUTTON: '[data-testid="relatorioGeralButton"]',
     AJUDA_BUTTON: '[data-testid="helperCtxBtn"]'
     
