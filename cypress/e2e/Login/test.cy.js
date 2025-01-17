@@ -11,9 +11,6 @@ import resultadoTesteHPV from '../../support/page/resultadoTesteHPV';
 // const estabelecimento = Cypress.env("estabelecimento")
 // const paciente = String(Cypress.env("paciente"))
 
-const municipio = 'Amaraji'
-const estabelecimento = 'PSF ALICE BATISTA DOS ANJOS'
-const paciente = 'MARIA JOSE DE ANDRADE'
 
 
 describe('Login Jordana', () => {
