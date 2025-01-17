@@ -71,6 +71,5 @@ java -jar jenkins.war --httpPort=8000
 
 	npm i --save-dev cypress-mochawesome-reporter
 	
-	Jenkins Password for gmail 
-	
-	bfia hmxz lfzt ipuw 
+	Jenkins Password for gmail:
+	Entrar em contato com ulisses1991@gmail.com ou ulissesdifreitas@gmail.com
